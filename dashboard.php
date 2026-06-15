@@ -133,6 +133,37 @@ try {
             list All students records table
         </div>
 
+        <!-- Standout Metrics / Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon" style="background-color: #e0f2fe; color: #0ea5e9;">
+                    👥
+                </div>
+                <div class="stat-details">
+                    <h4>Total Students</h4>
+                    <p><?php echo $totalCount; ?></p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background-color: #dcfce7; color: #10b981;">
+                    ✅
+                </div>
+                <div class="stat-details">
+                    <h4>Admitted</h4>
+                    <p><?php echo $admittedCount; ?></p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background-color: #fef3c7; color: #f59e0b;">
+                    ⏳
+                </div>
+                <div class="stat-details">
+                    <h4>Undecided</h4>
+                    <p><?php echo $undecidedCount; ?></p>
+                </div>
+            </div>
+        </div>
+
         <!-- Main Directory Panel -->
         <div class="panel" style="padding: 1.5rem; border-radius: 4px; box-shadow: none; border: 1px solid #bae6fd;">
             
@@ -174,12 +205,13 @@ try {
             </form>
 
             <!-- Students List Table matching screenshot column style -->
-            <div class="table-container" style="border: 1px solid #bae6fd; border-radius: 4px; overflow: hidden;">
-                <table class="data-table" style="width: 100%; border-collapse: collapse;">
+            <div class="table-container" style="border: 1px solid #bae6fd; border-radius: 4px; overflow-x: auto;">
+                <table class="data-table" style="width: 100%; border-collapse: collapse; min-width: 800px;">
                     <thead>
                         <tr style="background-color: #1e1145; color: #ffffff;">
                             <th style="padding: 0.85rem 1rem; text-align: left; font-weight: 600; font-size: 0.9rem;">S/n</th>
                             <th style="padding: 0.85rem 1rem; text-align: left; font-weight: 600; font-size: 0.9rem;">Name</th>
+                            <th style="padding: 0.85rem 1rem; text-align: left; font-weight: 600; font-size: 0.9rem;">Email</th>
                             <th style="padding: 0.85rem 1rem; text-align: left; font-weight: 600; font-size: 0.9rem;">Gender</th>
                             <th style="padding: 0.85rem 1rem; text-align: left; font-weight: 600; font-size: 0.9rem;">Jamb Score</th>
                             <th style="padding: 0.85rem 1rem; text-align: left; font-weight: 600; font-size: 0.9rem;">Admission Status</th>
@@ -194,7 +226,7 @@ try {
                             ?>
                                 <tr style="border-bottom: 1px solid #bae6fd;">
                                     <td style="padding: 0.85rem 1rem; color: #1f1c50;"><?php echo $sn++; ?></td>
-                                    <td style="padding: 0.85rem 1rem; color: #1f1c50;">
+                                    <td style="padding: 0.85rem 1rem; color: #1f1c50; font-weight: 500;">
                                         <?php 
                                             $fullName = $student['first_name'];
                                             if (!empty($student['middle_name'])) {
@@ -204,6 +236,7 @@ try {
                                             echo e($fullName);
                                         ?>
                                     </td>
+                                    <td style="padding: 0.85rem 1rem; color: #1f1c50;"><?php echo e($student['email']); ?></td>
                                     <td style="padding: 0.85rem 1rem; color: #1f1c50;"><?php echo e(strtolower($student['gender'])); ?></td>
                                     <td style="padding: 0.85rem 1rem; color: #1f1c50;"><?php echo intval($student['jamb_score']); ?></td>
                                     <td style="padding: 0.85rem 1rem;">
@@ -222,8 +255,8 @@ try {
                             <?php endforeach; ?>
                         <?php else: ?>
                             <tr>
-                                <td colspan="6" class="text-center" style="padding: 3rem; text-align: center;">
-                                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">No student records match search criteria.</p>
+                                <td colspan="7" class="text-center" style="padding: 3rem; text-align: center;">
+                                    <p style="color: #6b7280; margin-bottom: 1rem;">No student records found.</p>
                                     <a href="dashboard.php" class="btn btn-secondary">Clear Filters</a>
                                 </td>
                             </tr>

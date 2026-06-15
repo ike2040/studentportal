@@ -210,9 +210,16 @@ try {
                     <thead>
                         <tr style="background-color: #1e1145; color: #ffffff;">
                             <th style="padding: 0.85rem 1rem; text-align: left; font-weight: 600; font-size: 0.9rem;">S/n</th>
+                            <th style="padding: 0.85rem 1rem; text-align: center; font-weight: 600; font-size: 0.9rem;">Photo</th>
                             <th style="padding: 0.85rem 1rem; text-align: left; font-weight: 600; font-size: 0.9rem;">Name</th>
                             <th style="padding: 0.85rem 1rem; text-align: left; font-weight: 600; font-size: 0.9rem;">Email</th>
+                            <th style="padding: 0.85rem 1rem; text-align: left; font-weight: 600; font-size: 0.9rem;">Phone</th>
+                            <th style="padding: 0.85rem 1rem; text-align: left; font-weight: 600; font-size: 0.9rem;">DOB</th>
                             <th style="padding: 0.85rem 1rem; text-align: left; font-weight: 600; font-size: 0.9rem;">Gender</th>
+                            <th style="padding: 0.85rem 1rem; text-align: left; font-weight: 600; font-size: 0.9rem;">Address</th>
+                            <th style="padding: 0.85rem 1rem; text-align: left; font-weight: 600; font-size: 0.9rem;">State</th>
+                            <th style="padding: 0.85rem 1rem; text-align: left; font-weight: 600; font-size: 0.9rem;">LGA</th>
+                            <th style="padding: 0.85rem 1rem; text-align: left; font-weight: 600; font-size: 0.9rem;">Next of Kin</th>
                             <th style="padding: 0.85rem 1rem; text-align: left; font-weight: 600; font-size: 0.9rem;">Jamb Score</th>
                             <th style="padding: 0.85rem 1rem; text-align: left; font-weight: 600; font-size: 0.9rem;">Admission Status</th>
                             <th style="padding: 0.85rem 1rem; text-align: center; font-weight: 600; font-size: 0.9rem;">Action</th>
@@ -226,6 +233,9 @@ try {
                             ?>
                                 <tr style="border-bottom: 1px solid #bae6fd;">
                                     <td style="padding: 0.85rem 1rem; color: #1f1c50;"><?php echo $sn++; ?></td>
+                                    <td style="padding: 0.85rem 1rem; text-align: center;">
+                                        <img src="<?php echo e($student['profile_image']); ?>" alt="Photo" style="width: 40px; height: 40px; border-radius: 50%; object-fit: cover;">
+                                    </td>
                                     <td style="padding: 0.85rem 1rem; color: #1f1c50; font-weight: 500;">
                                         <?php 
                                             $fullName = $student['first_name'];
@@ -237,7 +247,13 @@ try {
                                         ?>
                                     </td>
                                     <td style="padding: 0.85rem 1rem; color: #1f1c50;"><?php echo e($student['email']); ?></td>
-                                    <td style="padding: 0.85rem 1rem; color: #1f1c50;"><?php echo e(strtolower($student['gender'])); ?></td>
+                                    <td style="padding: 0.85rem 1rem; color: #1f1c50;"><?php echo e($student['phone_number']); ?></td>
+                                    <td style="padding: 0.85rem 1rem; color: #1f1c50; white-space: nowrap;"><?php echo e($student['date_of_birth']); ?></td>
+                                    <td style="padding: 0.85rem 1rem; color: #1f1c50;"><?php echo e(ucfirst(strtolower($student['gender']))); ?></td>
+                                    <td style="padding: 0.85rem 1rem; color: #1f1c50; max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;" title="<?php echo e($student['address']); ?>"><?php echo e($student['address']); ?></td>
+                                    <td style="padding: 0.85rem 1rem; color: #1f1c50;"><?php echo e($student['state_of_origin']); ?></td>
+                                    <td style="padding: 0.85rem 1rem; color: #1f1c50;"><?php echo e($student['lga']); ?></td>
+                                    <td style="padding: 0.85rem 1rem; color: #1f1c50;"><?php echo e($student['next_of_kin']); ?></td>
                                     <td style="padding: 0.85rem 1rem; color: #1f1c50;"><?php echo intval($student['jamb_score']); ?></td>
                                     <td style="padding: 0.85rem 1rem;">
                                         <?php if ($student['admission_status'] === 'Admitted'): ?>
@@ -255,7 +271,7 @@ try {
                             <?php endforeach; ?>
                         <?php else: ?>
                             <tr>
-                                <td colspan="7" class="text-center" style="padding: 3rem; text-align: center;">
+                                <td colspan="14" class="text-center" style="padding: 3rem; text-align: center;">
                                     <p style="color: #6b7280; margin-bottom: 1rem;">No student records found.</p>
                                     <a href="dashboard.php" class="btn btn-secondary">Clear Filters</a>
                                 </td>

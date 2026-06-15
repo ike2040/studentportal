@@ -214,8 +214,8 @@ try {
                                         <?php endif; ?>
                                     </td>
                                     <td style="padding: 0.85rem 1rem; text-align: center;">
-                                        <a href="view.php?id=<?php echo intval($student['id']); ?>" class="action-btn" style="background-color: #2563eb; color: #ffffff; width: 1.85rem; height: 1.85rem; border-radius: 4px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.95rem; text-decoration: none;" title="View details">
-                                            📁
+                                        <a href="view.php?id=<?php echo intval($student['id']); ?>" style="background-color: #2563eb; color: #ffffff; padding: 0.4rem 0.8rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; display: inline-block; box-shadow: 0 1px 2px rgba(0,0,0,0.1);" title="View details">
+                                            View
                                         </a>
                                     </td>
                                 </tr>
